@@ -20,9 +20,15 @@ export default function Login({ navigation }) {
 
   async function onSubmit(data) {
     await api
-      .post("/login", { email: data.email, password: data.password })
+      .post("/login", {
+        email: data.email,
+        password: data.password,
+      })
       .then(() => navigation.navigate("Home"))
-      .catch((e) => Alert.alert("Verifique os dados"));
+      .catch((error) => {
+        console.log(error.request._response);
+        Alert.alert("Erro:" + error.request._response);
+      });
   }
 
   React.useEffect(() => {
