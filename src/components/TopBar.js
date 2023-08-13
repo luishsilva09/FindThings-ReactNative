@@ -1,9 +1,10 @@
-import { View, StyleSheet, Text, Alert } from "react-native";
+import { View, StyleSheet, Text, Alert, StatusBar } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function TopBar({ navigation }) {
   return (
     <View style={styles.content}>
+      <StatusBar hidden={false} barStyle={"default"}></StatusBar>
       <Ionicons
         name="duplicate-outline"
         size={32}
