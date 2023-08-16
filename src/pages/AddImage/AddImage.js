@@ -8,15 +8,26 @@ import api from "../../services/api";
 
 export default function AddImage(props) {
   const routeData = props.route.params;
-  async function pickImage() {
-    const token = await AsyncStorage.getItem("token");
+  const [token, setToken] = useState();
 
+  async function pickImage() {
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
     });
+    if (result.canceled) return;
 
+    sendFile(result);
+  }
+  async function selectImage() {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+    });
+    if (result.canceled) return;
+
+    sendFile(result);
+  }
+  async function sendFile(result) {
     const photo = new FormData();
-
     photo.append("image", {
       name: "teste",
       type:
@@ -44,6 +55,7 @@ export default function AddImage(props) {
     const getImagePickerPermissions = async () => {
       await ImagePicker.requestCameraPermissionsAsync();
       await ImagePicker.getCameraPermissionsAsync();
+      setToken(await AsyncStorage.getItem("token"));
     };
 
     getImagePickerPermissions();
@@ -53,7 +65,8 @@ export default function AddImage(props) {
       <TopBar />
       <View>
         <Text>Testssse</Text>
-        <Button onPress={pickImage} title={"Pick a photo"} />
+        <Button onPress={pickImage} title={"Take a photo"} />
+        <Button onPress={selectImage} title={"Choose a photo"} />
       </View>
     </SafeAreaView>
   );
