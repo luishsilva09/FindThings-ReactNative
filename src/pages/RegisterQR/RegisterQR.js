@@ -14,7 +14,7 @@ export default function RegisterQR({ navigation }) {
   const [load, setLoad] = useState(false);
   const [refCode, setRefCode] = useState("QR code");
 
-  const { register, setValue, handleSubmit, getValues } = useForm();
+  const { register, setValue, handleSubmit } = useForm();
 
   async function onSubmit(data) {
     setLoad(true);

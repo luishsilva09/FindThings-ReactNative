@@ -4,7 +4,7 @@ import {
   ScrollView,
   RefreshControl,
 } from "react-native";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import TopBar from "../../components/TopBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../../services/api";

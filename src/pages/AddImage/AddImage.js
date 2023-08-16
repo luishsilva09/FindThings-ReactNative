@@ -62,9 +62,9 @@ export default function AddImage(props) {
   }, []);
   return (
     <SafeAreaView>
-      <TopBar />
+      <TopBar navigation={props.navigation} />
       <View>
-        <Text>Testssse</Text>
+        <Text>Escolha como adicionar a imagem</Text>
         <Button onPress={pickImage} title={"Take a photo"} />
         <Button onPress={selectImage} title={"Choose a photo"} />
       </View>
