@@ -5,6 +5,7 @@ import { SafeAreaView, Text, View, Platform } from "react-native";
 import TopBar from "../../components/TopBar";
 import Button from "../../components/Button";
 import api from "../../services/api";
+import ImageList from "../../components/ImageList";
 
 export default function AddImage(props) {
   const routeData = props.route.params;
@@ -60,6 +61,7 @@ export default function AddImage(props) {
 
     getImagePickerPermissions();
   }, []);
+
   return (
     <SafeAreaView>
       <TopBar navigation={props.navigation} />
@@ -67,6 +69,7 @@ export default function AddImage(props) {
         <Text>Escolha como adicionar a imagem</Text>
         <Button onPress={pickImage} title={"Take a photo"} />
         <Button onPress={selectImage} title={"Choose a photo"} />
+        <ImageList data={routeData} token={token} />
       </View>
     </SafeAreaView>
   );
