@@ -18,7 +18,13 @@ export default function ImageCard({ data }) {
     <View>
       {imageLoad && (
         <View>
-          <ActivityIndicator color={"red"} />
+          <ActivityIndicator
+            color={"#341C3C"}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
         </View>
       )}
       {
@@ -27,7 +33,7 @@ export default function ImageCard({ data }) {
           source={{
             uri: data.url,
           }}
-          style={{ width: 180, height: 180, margin: 10 }}
+          style={{ width: 180, height: 180, margin: 5 }}
           onLoadStart={() => onLoading(true)}
           onLoadEnd={() => onLoading(false)}
         />
